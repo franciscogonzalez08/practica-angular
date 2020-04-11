@@ -1,0 +1,31 @@
+<li class="border list-unstyled">
+    <div class="row">
+        <div class="col-1" *ngIf="productMode">
+            <input type="checkbox" (change)="checkCB($event)">
+        </div>
+        <div class="media col">
+            <img class="mr-3" src="https://picsum.photos/id/{{ product.uid }}/200/200" alt="Generic placeholder image">
+            <div class="media-body mr-3">
+                <h5 class="mt-0 mb-1">{{ product.nombre }}</h5>
+                <p>Precio (MXN): ${{ product.precio }}</p>
+                <p>marca: {{ product.marca }}</p>
+                <p id="descripcion">Descripción: {{ product.descripcion }}</p>
+                <p>Existencia: {{ product.existencia }}</p>
+            </div>
+            <div class="media-right col-2 mt-3">
+                <div class="row">
+                    <a name="" id="" class="btn btn-primary" href="#" role="button" [routerLink]="['/product', product.uid, 'edit']"><i class="fas fa-edit"></i></a>
+                </div>
+                <div class="row mt-3">
+                    <a name="" id="" class="btn btn-primary" href="#" role="button" [routerLink]="['/product', product.uid]"><i class="fas fa-search"></i></a>
+                </div>
+                <div class="row mt-3" *ngIf="productMode">
+                    <a name="" id="" class="btn btn-danger" href="#" role="button" (click)="deleteProduct(product.uid)" [routerLink]="['/product']"><i class="fas fa-trash"></i></a>
+                </div>
+                <div class="row mt-3" *ngIf="!productMode">
+                    <a name="" id="" class="btn btn-danger" href="#" role="button" (click)="deleteId(product.uid)" [routerLink]="['/monitoreo']"><i class="fas fa-trash"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
